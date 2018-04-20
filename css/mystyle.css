@@ -12,10 +12,18 @@
     position: relative;
     }
 
+    #page {
+        padding-left: 8%;
+        overflow: hidden;
+        margin: 0 auto;
+        width: 80%;
+        padding-bottom: 130px;/*等于footer的高度*/
+    }
     #nav{
         width:20%;
         float: left;
     }
+
     #content{
         padding-left: 5%;
         width:70%;
@@ -34,6 +42,9 @@
 }
 
 @media screen and (max-width: 600px){
+    body{
+        padding: 0%;
+    }
     #footer {
         bottom: 0;
         width: 100%;
@@ -41,6 +52,13 @@
         /*background: #6cf;*/
         clear:both;
         text-align: center;
+    }
+    #page {
+        margin: 0 auto;
+        padding-bottom: 130px;/*等于footer的高度*/
+    }
+    #content{
+        float: left;
     }
 }
 #header {
@@ -70,11 +88,5 @@ li a:hover{
     border-top: 1px solid #eee;
     text-align: center;
 }
-#page {
-    padding-left: 8%;
-    overflow: hidden;
-    margin: 0 auto;
-    width: 80%;
-    padding-bottom: 130px;/*等于footer的高度*/
-}
+
 
