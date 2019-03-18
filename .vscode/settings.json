@@ -1,0 +1,9 @@
+{
+// 控制代码片段是否与其他建议一起显示及其排列的位置。
+"editor.snippetSuggestions": "top",
+// 控制编辑器是否应自动设置粘贴内容的格式。格式化程序必须可用并且能设置文档中某一范围的格式。
+"editor.formatOnPaste": true,
+"[markdown]": {
+    "editor.quickSuggestions": true
+},
+}
