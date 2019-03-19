@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/javascript/prism.js"></script>	
+		<link rel="stylesheet" type="text/css" href="/css/prism.css">
+		<link rel="stylesheet" type="text/css" href="/css/wecatch.css"> 
+		<link rel="stylesheet" type="text/css" href="/css/mystyle.css"> 
+		<title>玩转EsLint</title>
+
+		<style>
+			.markdown-body {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+
+			@media (max-width: 767px) {
+				.markdown-body {
+					padding: 15px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="header">
+			<div><a href="/">Home</a><button class="bubbly-button">toggle</button></div>
+		</div>
+		<article id="container">
+				<div id="page">
+					<div id="nav">
+						<p> New pages</p>
+
+<ul>
+	
+
+	<li>19 Mar 2019<br> <a href="/玩转EsLint">玩转EsLint</a></li>
+
+	
+
+	<li>19 Mar 2019<br> <a href="/ES6入门笔记2-解构赋值">ES6入门笔记2-解构赋值</a></li>
+
+	
+
+	<li>18 Mar 2019<br> <a href="/Git常用命令2">Git常用命令2</a></li>
+
+	
+
+	<li>25 Feb 2019<br> <a href="/Git常用命令">Git常用命令</a></li>
+
+	
+
+	<li>21 Feb 2019<br> <a href="/JS-立即执行函数表达式">JS-立即执行函数表达式</a></li>
+
+	
+
+	<li>20 Feb 2019<br> <a href="/ES6入门笔记">ES6入门笔记</a></li>
+
+	
+
+</ul>
+
+					</div>
+					<div id="content" class="markdown-body">
+						<h1 id="玩转eslint">玩转EsLint</h1>
+<p><strong>03/19/2019 Scott</strong></p>
+
+<blockquote>
+  <p>ESLint is an open source project originally created by Nicholas C. Zakas in June 2013. Its goal is to provide a pluggable linting utility for JavaScript.</p>
+</blockquote>
+
+<p>还是放个中文的介绍吧～</p>
+
+<blockquote>
+  <p>ESLint最初是由Nicholas C. Zakas 于2013年6月创建的开源项目。它的目标是提供一个插件化的javascript代码检测工具。</p>
+</blockquote>
+
+<p>简单的说，eslint就是一个能够帮我们检查我们代码的格式、语法，从而来规范前端开发团队在开发流程中的代码。</p>
+
+<h1 id="开始使用">开始使用</h1>
+
+<h3 id="安装在项目本地">安装在项目本地</h3>
+
+<p>如果你想让 ESLint 成为你项目构建系统的一部分，我们建议在本地安装。你可以使用 npm：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install </span>eslint <span class="nt">--save-dev</span>
+</code></pre></div></div>
+
+<p>紧接着你应该设置一个配置文件：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./node_modules/.bin/eslint <span class="nt">--init</span>
+</code></pre></div></div>
+
+<p>之后，你可以在你项目根目录运行 ESLint：</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./node_modules/.bin/eslint yourfile.js
+</code></pre></div></div>
+<p>或者你可以使用npx来运行 ESLint
+Instead of navigating to ./node_modules/.bin/ you may also use npx to run eslint:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx eslint
+</code></pre></div></div>
+
+<h3 id="全局安装">全局安装</h3>
+
+<p>如果你想使 ESLint 适用于你所有的项目，我们建议你全局安装 ESLint。你可以使用 npm：</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> eslint
+</code></pre></div></div>
+<p>紧接着你应该设置一个配置文件：</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>eslint <span class="nt">--init</span>
+</code></pre></div></div>
+<p>之后，你可以在任何文件或目录运行 ESLint：</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>eslint yourfile.js
+</code></pre></div></div>
+
+<h1 id="eslintrc配置">.eslintrc配置</h1>
+
+<p>运行 <code class="highlighter-rouge">eslint --init</code> 之后，.eslintrc 文件会在你的文件夹中自动创建。你可以在 .eslintrc 文件中看到许多像这样的规则：</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s2">"rules"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"semi"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"error"</span><span class="p">,</span> <span class="s2">"always"</span><span class="p">],</span>
+        <span class="s2">"quotes"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"error"</span><span class="p">,</span> <span class="s2">"double"</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>这里，”semi”指的是分号，如果你的代码语句缺少分号，则报错。”always”表示总是需要分号。具体的配置项可以到<a href="https://cn.eslint.org/docs/user-guide/configuring">ESLint官网</a>查看。</p>
+
+<p>你可以直接在.eslintrc这里面配置自己项目的rules，但我们也可以直接使用现在比较火的代码规范<a href="https://github.com/airbnb/javascript">Airbnb’s javascript style guide</a>。</p>
+
+<h1 id="airbnbs-javascript-style-guide">Airbnb’s javascript style guide</h1>
+<p>我喜欢使用Airbnb’s javascript style guide 作为校验javascript的规则。Airbnb的规范是很火的代码规范。</p>
+
+<blockquote>
+  <p>https://github.com/airbnb/javascript</p>
+</blockquote>
+
+<p>For Chinese version</p>
+<blockquote>
+  <p>https://github.com/lin-123/javascript.</p>
+</blockquote>
+
+<p>Important: 强烈推荐添加 <strong>eslint-config-airbnb</strong> 到你的ESLint. 更多信息和配置请访问https://www.npmjs.com/package/eslint-config-airbnb.</p>
+
+<h1 id="使用-eslint-config-airbnb">使用 eslint-config-airbnb</h1>
+
+<p>我们需要安装正确版本的包，以下命令可以查看</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm info <span class="s2">"eslint-config-airbnb@latest"</span> peerDependencies
+</code></pre></div></div>
+
+<p>当然，可以直接</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i eslint-config-airbnb  
+</code></pre></div></div>
+<p>如果安装上面遇到问题，建议访问<a href="https://www.npmjs.com/package/eslint-config-airbnb">官网</a>.</p>
+
+<p>安装好之后，添加 “extends”: “airbnb” 到你的.eslintrc.</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>   <span class="s2">"extends"</span><span class="p">:</span> <span class="s2">"airbnb"</span><span class="p">,</span>
+    <span class="s2">"rules"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"semi"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"error"</span><span class="p">,</span> <span class="s2">"always"</span><span class="p">],</span>
+        <span class="s2">"quotes"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"error"</span><span class="p">,</span> <span class="s2">"double"</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>如果你碰到你不喜欢、或者不适用当前项目的规范规则，你可以选择屏蔽掉。像这样。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>   <span class="s2">"extends"</span><span class="p">:</span> <span class="s2">"airbnb"</span><span class="p">,</span>
+    <span class="s2">"rules"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"import/prefer-default-export"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"jsx-a11y/href-no-hash"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"react/forbid-prop-types"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"react/require-default-props"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"react/jsx-no-bind"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"jsx-a11y/rule-name"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"react/prop-types"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"jsx-a11y/click-events-have-key-events"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"jsx-a11y/no-static-element-interactions"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"react/destructuring-assignment"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"jsx-a11y/anchor-is-valid"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"react/no-unescaped-entities"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s2">"react/react-in-jsx-x"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">"react/react-in-jsx-scope"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>“off” or 0 - 关闭规则</li>
+  <li>“warn” or 1 - 将规则视为一个警告（不会影响退出码）</li>
+  <li>“error” or 2 - 将规则视为一个错误 (退出码为1)</li>
+</ul>
+
+<h1 id="配置ide">配置IDE</h1>
+
+<ul>
+  <li>VS code
+需要安装插件<strong>ESLint</strong>，直接在extensions里面搜索，安装后重启编辑器即可。</li>
+  <li>Atom
+需要安装插件<strong>linter, linter-eslint, linter-ui-default</strong>.</li>
+</ul>
+
+					</div>
+				</div>
+				
+				<div id="footer">
+						<div class="border"></div>
+<p style="text-align:center;font-size:13px;height:20px">
+    我挥舞着键盘和本子，发誓要把世界写个明明白白
+</p>
+<p style="text-align:center;font-size:10px;">
+        Scott intofor@163.com
+</p>
+				</div>
+		</article>
+		<canvas id="mycanvas"></canvas>
+		<script type="text/javascript">
+			var mycanvas = document.getElementById("mycanvas");
+			var ctx = mycanvas.getContext("2d");
+			ctx.canvas.width = window.innerWidth;
+			ctx.canvas.height = window.innerHeight;
+			//圆形类
+			function Circle(x, y, r, color) {
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				// 颜色的取值范围
+				this.color = "rgb(" + (parseInt(Math.random() * 240) + 9) + "," + (parseInt(Math.random() * 220) + 18) + ",203)";
+				//随机方向
+				this.dx = Math.random() * 12 - 7;
+				this.dy = Math.random() * 12 - 7;
+				//往数组中push自己
+				circleArr.push(this);
+			}
+			//渲染
+			Circle.prototype.render = function () {
+				//新建一条路径
+				ctx.beginPath();
+				//创建一个圆
+				ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+				//设置样式颜色
+				ctx.fillStyle = this.color;
+				//通过填充路径的内容区域生成实心的图形
+				ctx.fill();
+			}
+			//更新
+			Circle.prototype.update = function () {
+				this.x += this.dx;
+				this.y += this.dy;
+				this.r--;
+				if (this.r < 0) {
+					for (var i = 0; i < circleArr.length; i++) {
+						if (circleArr[i] === this) {
+							circleArr.splice(i, 1);
+						};
+					}
+					return false;
+				}
+				return true;
+			}
+			//创建一个数组
+			var circleArr = [];
+			//鼠标移动事件
+			window.onmousemove = function (event) {
+				new Circle(event.clientX, event.clientY, 30, "orange");
+			}
+			//设置定时器每20毫秒更新和渲染
+			setInterval(function () {
+				ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+				for (var i = 0; i < circleArr.length; i++) {
+					circleArr[i].update() && circleArr[i].render();
+				};
+			}, 20);
+
+			// button
+			var animateButton = function (e) {
+					mycanvas.style.display = mycanvas.style.display === 'none' ? 'block' : 'none';
+					console.log(mycanvas.style);
+					e.preventDefault;
+					//reset animation
+					e.target.classList.remove('animate');
+
+					e.target.classList.add('animate');
+					setTimeout(function () {
+						e.target.classList.remove('animate');
+					}, 700);
+				};
+
+				var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+				for (var i = 0; i < bubblyButtons.length; i++) {
+					bubblyButtons[i].addEventListener('click', animateButton, false);
+				}
+		</script>
+	</body>
+
+</html>
