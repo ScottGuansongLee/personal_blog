@@ -144,11 +144,7 @@ deployment workflows and (maybe most importantly) on your and your teammates‘ 
 </p>
 				</div>
 		</article>
-		<canvas id="mycanvas" style="position: fixed;
-						display: block;
-				    top: 0px;
-				    left: 0px;
-				    opacity: 0.5;"></canvas>
+		<canvas id="mycanvas"></canvas>
 		<script type="text/javascript">
 			var mycanvas = document.getElementById("mycanvas");
 			var ctx = mycanvas.getContext("2d");
@@ -196,7 +192,7 @@ deployment workflows and (maybe most importantly) on your and your teammates‘ 
 			//创建一个数组
 			var circleArr = [];
 			//鼠标移动事件
-			mycanvas.onmousemove = function (event) {
+			window.onmousemove = function (event) {
 				new Circle(event.clientX, event.clientY, 30, "orange");
 			}
 			//设置定时器每20毫秒更新和渲染
