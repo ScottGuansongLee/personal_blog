@@ -30,7 +30,7 @@
 
 	<body>
 		<div id="header">
-			<div><a href="/">Home</a></div>
+			<div><a href="/">Home</a><button class="bubbly-button">toggle</button></div>
 		</div>
 		<article id="container">
 				<div id="page">
@@ -140,6 +140,26 @@ https://segmentfault.com/a/1190000003985390</p>
 					circleArr[i].update() && circleArr[i].render();
 				};
 			}, 20);
+
+			// button
+			var animateButton = function (e) {
+					mycanvas.style.display = mycanvas.style.display === 'none' ? 'block' : 'none';
+					console.log(mycanvas.style);
+					e.preventDefault;
+					//reset animation
+					e.target.classList.remove('animate');
+
+					e.target.classList.add('animate');
+					setTimeout(function () {
+						e.target.classList.remove('animate');
+					}, 700);
+				};
+
+				var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+				for (var i = 0; i < bubblyButtons.length; i++) {
+					bubblyButtons[i].addEventListener('click', animateButton, false);
+				}
 		</script>
 	</body>
 
