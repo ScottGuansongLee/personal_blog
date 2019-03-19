@@ -7,9 +7,7 @@ excerpt_separator: <!--end-->
 
 我第一篇markdown的page
 =======================
-{{ page.date }}
-404 原创
-----------------------
+**{{ page.date | date: "%m/%d/%Y" }} Scott**
 
 Now is the time for all good men to come to
 the aid of their country. This is just a

@@ -16,7 +16,7 @@
 	// 	"description": "Log output to console"
 	// }
 	"Print to console": {
-		"prefix": "new",
+		"prefix": "md",
 		"body": [
 			"---",
 			"layout: default",
@@ -26,9 +26,15 @@
 			"---\n",
 			"$1",
 			"=======================",
-			"{{ page.date }}",
-			"404",
-			"----------------------"
+			"**{{ page.date | date: \"%m/%d/%Y\" }} Scott**"
+		],
+		"description": "Log output to console"
+	},
+	"javascript": {
+		"prefix": "js",
+		"body": [
+			"```javascript\n",
+			"```"
 		],
 		"description": "Log output to console"
 	}

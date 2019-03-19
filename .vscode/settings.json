@@ -6,4 +6,5 @@
 "[markdown]": {
     "editor.quickSuggestions": true
 },
+"eslint.enable": false,
 }

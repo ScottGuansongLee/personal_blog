@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/javascript/prism.js"></script>	
+		<link rel="stylesheet" type="text/css" href="/css/prism.css">
+		<link rel="stylesheet" type="text/css" href="/css/wecatch.css"> 
+		<link rel="stylesheet" type="text/css" href="/css/mystyle.css"> 
+		<title>入门笔记2-解构赋值</title>
+
+		<style>
+			.markdown-body {
+				box-sizing: border-box;
+				min-width: 200px;
+				max-width: 980px;
+				margin: 0 auto;
+				padding: 45px;
+			}
+
+			@media (max-width: 767px) {
+				.markdown-body {
+					padding: 15px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="header">
+			<div><a href="/">Home</a></div>
+		</div>
+		<article id="container">
+				<div id="page">
+					<div id="nav">
+						<p> New pages</p>
+
+<ul>
+	
+
+	<li>19 Mar 2019<br> <a href="/入门笔记2-解构赋值">入门笔记2-解构赋值</a></li>
+
+	
+
+	<li>18 Mar 2019<br> <a href="/Git常用命令2">Git常用命令2</a></li>
+
+	
+
+	<li>25 Feb 2019<br> <a href="/Git常用命令">Git常用命令</a></li>
+
+	
+
+	<li>21 Feb 2019<br> <a href="/JS-立即执行函数表达式">JS-立即执行函数表达式</a></li>
+
+	
+
+	<li>20 Feb 2019<br> <a href="/ES6入门笔记">ES6入门笔记</a></li>
+
+	
+
+</ul>
+
+					</div>
+					<div id="content" class="markdown-body">
+						<h1 id="入门笔记2-解构赋值destructuring">入门笔记2-解构赋值(Destructuring)</h1>
+<p><strong>03/19/2019 Scott</strong></p>
+
+<blockquote>
+  <p>解构赋值语法是一种 Javascript 表达式，它使得将值从数组，或属性从对象，提取到不同的变量中，成为可能。</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="nx">rest</span><span class="p">;</span>
+<span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 20</span>
+
+<span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 20</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rest</span><span class="p">);</span> <span class="c1">// [30, 40, 50]</span>
+
+<span class="p">({</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span> <span class="na">a</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">20</span> <span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 20</span>
+
+
+<span class="c1">// Stage 4（已完成）提案中的特性</span>
+<span class="p">({</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="na">d</span><span class="p">:</span> <span class="mi">40</span><span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 20</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rest</span><span class="p">);</span> <span class="c1">// {c: 30, d: 40}</span>
+</code></pre></div></div>
+
+<p>解构赋值的意思就是可以通过数组或对象中的元素，与等号左边对应的变量进行匹配，从而将特定的元素提取到该变量中的赋值。解构赋值主要分为两种形式，解构数组和解构对象。</p>
+
+<h1 id="解构数组">解构数组</h1>
+
+<p>这种情况是，在赋值等号的两边各是一个数组，右边数组里面的元素依次赋值给左边数组内的变量。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"one"</span><span class="p">,</span> <span class="s2">"two"</span><span class="p">,</span> <span class="s2">"three"</span><span class="p">];</span>
+
+<span class="kd">var</span> <span class="p">[</span><span class="nx">one</span><span class="p">,</span> <span class="nx">two</span><span class="p">,</span> <span class="nx">three</span><span class="p">]</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">one</span><span class="p">);</span> <span class="c1">// "one"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">two</span><span class="p">);</span> <span class="c1">// "two"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">three</span><span class="p">);</span> <span class="c1">// "three"</span>
+</code></pre></div></div>
+
+<p>必要时，可以添加默认值。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">;</span>
+
+<span class="p">[</span><span class="nx">a</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nx">b</span><span class="o">=</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 7</span>
+</code></pre></div></div>
+
+<p>当解构一个数组时，可以使用剩余模式，将数组剩余部分赋值给一个变量。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="p">...</span><span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// [2, 3]</span>
+</code></pre></div></div>
+
+<h1 id="解构对象">解构对象</h1>
+
+<p>当赋值等号左右两边分别是对象的时候，使用解构对象。对象内的属性的值会对应其属性进行赋值。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span><span class="na">p</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="na">q</span><span class="p">:</span> <span class="kc">true</span><span class="p">};</span>
+<span class="kd">var</span> <span class="p">{</span><span class="nx">p</span><span class="p">,</span> <span class="nx">q</span><span class="p">}</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span> <span class="c1">// 42</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">q</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<p>如果你希望你的变量名和原来的属性的名称不一样，可以这样写。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">o</span> <span class="o">=</span> <span class="p">{</span><span class="na">p</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="na">q</span><span class="p">:</span> <span class="kc">true</span><span class="p">};</span>
+<span class="kd">var</span> <span class="p">{</span><span class="na">p</span><span class="p">:</span> <span class="nx">foo</span><span class="p">,</span> <span class="na">q</span><span class="p">:</span> <span class="nx">bar</span><span class="p">}</span> <span class="o">=</span> <span class="nx">o</span><span class="p">;</span>
+ 
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span> <span class="c1">// 42 </span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bar</span><span class="p">);</span> <span class="c1">// true</span>
+</code></pre></div></div>
+
+<p>一样地，我们可以添加默认值。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="p">{</span><span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span> <span class="mi">3</span><span class="p">};</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span> <span class="c1">// 3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">);</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<p><strong>For of 迭代和解构。</strong></p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'Mike Smith'</span><span class="p">,</span>
+    <span class="na">family</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">mother</span><span class="p">:</span> <span class="s1">'Jane Smith'</span><span class="p">,</span>
+      <span class="na">father</span><span class="p">:</span> <span class="s1">'Harry Smith'</span><span class="p">,</span>
+      <span class="na">sister</span><span class="p">:</span> <span class="s1">'Samantha Smith'</span>
+    <span class="p">},</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">35</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'Tom Jones'</span><span class="p">,</span>
+    <span class="na">family</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">mother</span><span class="p">:</span> <span class="s1">'Norah Jones'</span><span class="p">,</span>
+      <span class="na">father</span><span class="p">:</span> <span class="s1">'Richard Jones'</span><span class="p">,</span>
+      <span class="na">brother</span><span class="p">:</span> <span class="s1">'Howard Jones'</span>
+    <span class="p">},</span>
+    <span class="na">age</span><span class="p">:</span> <span class="mi">25</span>
+  <span class="p">}</span>
+<span class="p">];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="nx">n</span><span class="p">,</span> <span class="na">family</span><span class="p">:</span> <span class="p">{</span><span class="na">father</span><span class="p">:</span> <span class="nx">f</span><span class="p">}}</span> <span class="k">of</span> <span class="nx">people</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Name: '</span> <span class="o">+</span> <span class="nx">n</span> <span class="o">+</span> <span class="s1">', Father: '</span> <span class="o">+</span> <span class="nx">f</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// "Name: Mike Smith, Father: Harry Smith"</span>
+<span class="c1">// "Name: Tom Jones, Father: Richard Jones"</span>
+
+</code></pre></div></div>
+
+<p>Rest 属性收集那些尚未被解构模式拾取的剩余可枚举属性键。</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="p">{</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="na">a</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="na">b</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="na">c</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="na">d</span><span class="p">:</span> <span class="mi">40</span><span class="p">}</span>
+<span class="nx">a</span><span class="p">;</span> <span class="c1">// 10 </span>
+<span class="nx">b</span><span class="p">;</span> <span class="c1">// 20 </span>
+<span class="nx">rest</span><span class="p">;</span> <span class="c1">// { c: 30, d: 40 }</span>
+</code></pre></div></div>
+
+					</div>
+				</div>
+				
+				<div id="footer">
+						<div class="border"></div>
+<p style="text-align:center;font-size:13px;height:20px">
+    我挥舞着键盘和本子，发誓要把世界写个明明白白
+</p>
+<p style="text-align:center;font-size:10px;">
+        Scott intofor@163.com
+</p>
+				</div>
+		</article>
+		<canvas id="mycanvas" style="position: fixed;
+						display: block;
+				    top: 0px;
+				    left: 0px;
+				    opacity: 0.5;"></canvas>
+		<script type="text/javascript">
+			var mycanvas = document.getElementById("mycanvas");
+			var ctx = mycanvas.getContext("2d");
+			ctx.canvas.width = window.innerWidth;
+			ctx.canvas.height = window.innerHeight;
+			//圆形类
+			function Circle(x, y, r, color) {
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				// 颜色的取值范围
+				this.color = "rgb(" + (parseInt(Math.random() * 240) + 9) + "," + (parseInt(Math.random() * 220) + 18) + ",203)";
+				//随机方向
+				this.dx = Math.random() * 12 - 7;
+				this.dy = Math.random() * 12 - 7;
+				//往数组中push自己
+				circleArr.push(this);
+			}
+			//渲染
+			Circle.prototype.render = function () {
+				//新建一条路径
+				ctx.beginPath();
+				//创建一个圆
+				ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+				//设置样式颜色
+				ctx.fillStyle = this.color;
+				//通过填充路径的内容区域生成实心的图形
+				ctx.fill();
+			}
+			//更新
+			Circle.prototype.update = function () {
+				this.x += this.dx;
+				this.y += this.dy;
+				this.r--;
+				if (this.r < 0) {
+					for (var i = 0; i < circleArr.length; i++) {
+						if (circleArr[i] === this) {
+							circleArr.splice(i, 1);
+						};
+					}
+					return false;
+				}
+				return true;
+			}
+			//创建一个数组
+			var circleArr = [];
+			//鼠标移动事件
+			mycanvas.onmousemove = function (event) {
+				new Circle(event.clientX, event.clientY, 30, "orange");
+			}
+			//设置定时器每20毫秒更新和渲染
+			setInterval(function () {
+				ctx.clearRect(0, 0, window.innerWidth, window.innerHeight)
+				for (var i = 0; i < circleArr.length; i++) {
+					circleArr[i].update() && circleArr[i].render();
+				};
+			}, 20);
+		</script>
+	</body>
+
+</html>
